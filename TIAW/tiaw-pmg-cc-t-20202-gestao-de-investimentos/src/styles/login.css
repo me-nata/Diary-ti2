@@ -99,7 +99,7 @@ form{
     width: 100%;
 }
 
-button{
+.field button{
     width: 100%;
     height: 35px;
     
@@ -114,7 +114,7 @@ button{
     transition-property: border-radius, box-shadow;
     transition-duration: 0.5s;
 }
-button:hover{
+.field button:hover{
     border-radius: 100px;
     box-shadow: 1px 5px black;
 }

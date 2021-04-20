@@ -28,6 +28,26 @@ body {
 
 }
 
+header {
+  position: relative;
+}
+
+header button {
+  width: max-content;
+  height: 50px;
+  border-radius: 20px;
+  border: 2px solid gold;
+  background-color: beige;
+
+  transition-property: all;
+  transition-duration: 0.5s;
+
+  margin-top: 0;
+}
+header button:hover {
+  box-shadow: 5px 2px 2px gold;
+}
+
 /*Header*/
 #nb{
   position: fixed;
