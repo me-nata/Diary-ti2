@@ -1,5 +1,7 @@
 package com.ti2cc;
 
+import Usuario.java;
+
 import java.sql.*;
 
 public class DAO {

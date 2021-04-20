@@ -1,3 +1,16 @@
-.perfil{
-    margin:0;
+header {
+    position: relative;
+}
+
+header button {
+    width: max-content;
+    border-radius: 20px;
+    border: 2px solid gold;
+    background-color: beige;
+
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+button:hover {
+    box-shadow: 5px 2px 2px gold;
 }
