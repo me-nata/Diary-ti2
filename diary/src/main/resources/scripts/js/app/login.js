@@ -1,0 +1,1 @@
+$.get("https://g1.globo.com");
