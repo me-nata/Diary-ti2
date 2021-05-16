@@ -9,7 +9,7 @@ public class Aplicacao {
 	private static UsuarioService usuarioService = new UsuarioService();
 	
     public static void main(String[] args) {
-        //port(6789);
+        port(6580);
 
         post("/usuario", (request, response) -> usuarioService.add(request, response));
 

@@ -15,6 +15,7 @@ public class UsuarioService {
 	public UsuarioService() {
 		//try {
 			usuarioDAO = new UsuarioDAO( );
+			usuarioDAO.conectar();
 		/*} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}*/

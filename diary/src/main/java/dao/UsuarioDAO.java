@@ -19,7 +19,7 @@ public class UsuarioDAO {
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
-		String mydatabase = "Usuario";
+		String mydatabase = "diary";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
 		String username = "ti2cc";
@@ -56,15 +56,12 @@ public class UsuarioDAO {
 
 	public static boolean inserirUsuario(Usuario usuario) {
 		boolean status = false;
-	/*	String s = "";
-		boolean b = false;*/
+
 		try {  
 			Statement st = conexao.createStatement();
-			/*b = usuario.getPremium();
-			s = ""+b;*/
 			
-			st.executeUpdate("INSERT INTO usuario (id, nome, email, senha, idade, premium) "
-					       + "VALUES ("+usuario.getId()+ ", '" + usuario.getNome() + "', '"  
+			st.executeUpdate("INSERT INTO usuarios (id, nome, email, senha, idade, premium) "
+					       + "VALUES (default, '" + usuario.getNome() + "', '"  
 					       + usuario.getEmail() + "', '" + usuario.getSenha() + "', " + usuario.getIdade() + ", '" 
 					       + usuario.getPremium() + "');");
 			st.close();
