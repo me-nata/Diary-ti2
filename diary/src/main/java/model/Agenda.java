@@ -4,7 +4,7 @@
 package model;
 
 public class Agenda {
-	private int id_usuario;
+	private int id;
 	private String texto;
 	private String data;
 	
@@ -14,13 +14,13 @@ public class Agenda {
 		this.data = "";
 	}
 	
-	public Agenda(int id_usuario) {
+	public Agenda(int id) {
 		this.id = id;
 		this.texto = "";
 		this.data = "";
 	}
 	
-	public Usuario(int id, String texto, String data) {
+	public Agenda(int id, String texto, String data) {
 		this.id = id;
 		this.texto = texto;
 		this.data = data;

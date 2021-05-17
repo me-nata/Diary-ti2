@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import dao.AgendaDAO;
+import dao.UsuarioDAO;
 import model.Agenda;
 import spark.Request;
 import spark.Response;
@@ -12,26 +13,23 @@ import spark.Response;
 
 public class AgendaService {
 
+	private UsuarioDAO usuarioDAO;
 	private AgendaDAO agendaDAO;
 
 	public AgendaService() {
-		try {
-			agendaDAO = new DAO("agenda.dat");
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+		agendaDAO = new AgendaDAO();
 	}
-
+	
 	public Object add(Request request, Response response) {
-		String email = request.queryParams("texto");
-		String senha = request.queryParams("data");
+		String texto = request.queryParams("texto");
+		String data = request.queryParams("data");
                 
-		Agenda agenda = new Agenda(id, texto, data);
+		Agenda agenda = new Agenda(0, texto, data);
 
-		AgendaDAO.inserirAgenda(agenda);
+		agendaDAO.inserirAgenda(agenda);
 
 		response.status(201); // 201 Created
-		return id;
+		return 0;
 	}
 
 	public Object get(Request request, Response response) {
@@ -90,23 +88,5 @@ public class AgendaService {
             response.status(404); // 404 Not found
             return "Agenda não encontrada.";
         }
-	}
-
-	public Object getAll(Request request, Response response) {
-		StringBuffer returnValue = new StringBuffer("<produtos type=\"array\">");
-		for (Produto produto : produtoDAO.getAll()) {
-			returnValue.append("\n<produto>\n" + 
-            		"\t<id>" + produto.getId() + "</id>\n" +
-            		"\t<descricao>" + produto.getDescricao() + "</descricao>\n" +
-            		"\t<preco>" + produto.getPreco() + "</preco>\n" +
-            		"\t<quantidade>" + produto.getQuant() + "</quantidade>\n" +
-            		"\t<fabricacao>" + produto.getDataFabricacao() + "</fabricacao>\n" +
-            		"\t<validade>" + produto.getDataValidade() + "</validade>\n" +
-            		"</produto>\n");
-		}
-		returnValue.append("</produtos>");
-	    response.header("Content-Type", "application/xml");
-	    response.header("Content-Encoding", "UTF-8");
-		return returnValue.toString();
 	}
 }

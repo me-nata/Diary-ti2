@@ -6,12 +6,7 @@ import java.sql.*;
 
 public class AgendaDAO {
 	private Connection conexao;
-	private int maxId = 0;                
-	
-	public int getMaxId() {
-		return maxId;
-	}
-	
+
 	public AgendaDAO() {
 		conexao = null;
 	}
@@ -61,8 +56,8 @@ public class AgendaDAO {
 			Statement st = conexao.createStatement();
 			
 			st.executeUpdate("INSERT INTO agenda (id, texto, data) "
-					       + "VALUES ("+usuario.getId()+ ", '" + usuario.getTexto() + "', '"  
-					       + usuario.getData() + "');");
+					       + "VALUES ("+agenda.getId()+ ", '" + agenda.getTexto() + "', '"  
+					       + agenda.getData() + "');");
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -75,8 +70,8 @@ public class AgendaDAO {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			String sql = "UPDATE agenda SET texto = '" + usuario.getTexto() + "', data = '" + usuario.getData() + "'"
-					   + " WHERE id = " + usuario.getId();
+			String sql = "UPDATE agenda SET texto = '" + agenda.getTexto() + "', data = '" + agenda.getData() + "'"
+					   + " WHERE id = " + agenda.getId();
 			st.executeUpdate(sql);
 			st.close();
 			status = true;
