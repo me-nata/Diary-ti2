@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie-edge">
-    <title>Agenda</title>
-    <script src="scripts/app.js"></script>
-    <link rel="shortcut icon" href="assets/diary.png">
+    <meta content="application/x-www-form-urlencoded; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="styles/style-diario.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/stylediary.css">
+    <title>Agenda</title>
 </head>
 <body>
     <!--NavBar-->
@@ -52,40 +54,15 @@
             </nav>
         </div>
     </header>
-    <!--Aviso-->
-    <section class="agenda padding">
-        <div class="container padding">
-            <div class="row padding text-center">
-                <div class="col-12 agenda-content">
-                    <h1><span class="title">Diary</span>List</h1>
-                    <div class="inputDiv">
-                        <output id="date"></output>
-                        <textarea name="texto" id="texto" class="input" placeholder="anote algo..."></textarea>
-                        <button class="add"><i class="fas fa-plus"></i></button>
-                    </div>
-                    <div class="container"></div>
-                </div>
-            </div>
+    <main>
+        <h1>Seja vem vindo ao nosso diario. Aqui vc pode fazer anotaçoes rápidas sobre custos, investimentos e outros</h1>
+        <div id="quadros">
+            <button id="add" type="button" nome="add_quadro">+</button>
+            <button id="save" type="button">Salvar</button>
         </div>
-    </section>
-    <!--Redes Sociais-->
-    <section class="redes-sociais">
-        <div class="container-fluid padding">
-            <div class="row text-center padding">
-                <div class="col-12">
-                    <h2>Redes Sociais</h2>
-                </div>
-                <div class="col-12 social padding">
-                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://plus.google.com/" target="_blank"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="https://www.twitch.tv/" target="_blank"><i class="fab fa-twitch"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
+    <script src="scripts/main.js"></script>
+    
     <!--Rodape-->
     <footer>
         <div class="container-fluid padding">
@@ -120,18 +97,5 @@
             </div>
         </div>
     </footer>
-    
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src='scripts/main.js'></script>
-    <script>
-        let negociacaoController = new NegociacaoController();
-        negociacaoController._limpaFormulario();
-
-        
-    </script>
 </body>
 </html>

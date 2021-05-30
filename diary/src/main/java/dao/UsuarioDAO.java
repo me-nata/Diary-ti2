@@ -5,7 +5,12 @@ import model.Usuario;
 import java.sql.*;
 
 public class UsuarioDAO {
-	private  static Connection conexao;       
+	private  static Connection conexao;
+	private static int maxId = 0;                
+	
+	public static int getMaxId() {
+		return maxId;
+	}
 	
 	public UsuarioDAO() {
 		conexao = null;
@@ -14,7 +19,7 @@ public class UsuarioDAO {
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
-		String mydatabase = "diary";
+		String mydatabase = "Usuario";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
 		String username = "ti2cc";
@@ -51,12 +56,15 @@ public class UsuarioDAO {
 
 	public static boolean inserirUsuario(Usuario usuario) {
 		boolean status = false;
-
+	/*	String s = "";
+		boolean b = false;*/
 		try {  
 			Statement st = conexao.createStatement();
+			/*b = usuario.getPremium();
+			s = ""+b;*/
 			
-			st.executeUpdate("INSERT INTO usuarios (id, nome, email, senha, idade, premium) "
-					       + "VALUES (default, '" + usuario.getNome() + "', '"  
+			st.executeUpdate("INSERT INTO usuario (id, nome, email, senha, idade, premium) "
+					       + "VALUES ("+usuario.getId()+ ", '" + usuario.getNome() + "', '"  
 					       + usuario.getEmail() + "', '" + usuario.getSenha() + "', " + usuario.getIdade() + ", '" 
 					       + usuario.getPremium() + "');");
 			st.close();
@@ -112,7 +120,7 @@ public class UsuarioDAO {
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM usuarios");		
+			ResultSet rs = st.executeQuery("SELECT * FROM usuario");		
 	         if(rs.next()){
 	             rs.last();
 	             usuarios = new Usuario[rs.getRow()];
@@ -127,23 +135,7 @@ public class UsuarioDAO {
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		
 		return usuarios;
 	}
-	
-//	private int getId() {
-//		boolean status = false;
-//		String id;
-//		
-//		try {  
-//			Statement st = conexao.createStatement();
-//			String sql = "SELECT id FROM usuarios WHERE (nome = "+")"; 
-//			id = st.executeUpdate(sql);
-//			st.close();
-//			status = true;
-//		} catch (SQLException u) {  
-//			throw new RuntimeException(u);
-//		}
-//		return status;
-//	}
+
 }

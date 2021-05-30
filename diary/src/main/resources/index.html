@@ -46,7 +46,7 @@
                             <li class="nav-item">
                                 <a href="login.html" class="nav-link">Login</a>
                             </li>
-                            <button href="text-premium.html">Premium</button>
+                            <button id="button-header" href="text-premium.html">Premium</button>
                         </ul>
                     </div>
                 </div>
@@ -97,6 +97,7 @@
             </div>
         </div>
     </section>
+
     <div id="chatbot">
         <h1>ALGUMA DÚVIDA? PERGUNTE AO CHATBOT</h1>
         <p>Dúvidas gerais sobre o site? <a href="#duvidas">click aqui</a></p>
@@ -180,89 +181,91 @@
         </div>
     </section>
     <!--Duvidas Frequentes-->
-    <section class="duvidas">
-        <div class="container-fluid padding">
-            <div class="row text-center padding">
-                <div class="col-12 titulo">
-                    <h2>Dúvidas Frequentes</h2>
-                </div>
-                <div class="col-12">
-                    <div class="accordion" id="accordionExample">
-                        <div class="card">
-                          <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Como funciona ?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">
-                              <p>De uma maneira bem simples, nosso site foi feito apenas com o objetivo de levar conhecimento as usuários, e despertar a curiosidade deles em relação aos investimentos e como gerenciar eles.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                É seguro ?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                              <p>Nosso site é totalmente seguro, não pedimos nenhuma informação que comprometa a segurança dos nossos usuários e sempre prezamos pela transparência.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Quando posso começar ?
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                              O primeiro passo é estudar e se interessar por uma área dos investimentos, e após isso, aprofundar nos seus estudos até sentir confiança o bastante para iniciar.
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFour">
-                              <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                 Existe uma idade específica ?
-                                </button>
-                              </h2>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                              <div class="card-body">
-                                Não. Para iniciar no mundo dos investimentos, não importa se você é um idoso ou uma pessoa mais nova, basta ter curiosidade de aprender e coragem para iniciar a sua jornada de investimentos.
+    <div id="duvidas">
+        <section class="duvidas">
+            <div class="container-fluid padding">
+                <div class="row text-center padding">
+                    <div class="col-12 titulo">
+                        <h2>Dúvidas Frequentes</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                              <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Como funciona ?
+                                  </button>
+                                </h2>
+                              </div>
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                  <p>De uma maneira bem simples, nosso site foi feito apenas com o objetivo de levar conhecimento as usuários, e despertar a curiosidade deles em relação aos investimentos e como gerenciar eles.</p>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div class="card">
-                            <div class="card-header" id="headingFive">
-                              <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                  Preciso ser experiente na área ?
-                                </button>
-                              </h2>
-                            </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                              <div class="card-body">
-                                Não. A experiência você vai adquirir ao longo do tempo, basta persistir e ter em mente que é um estudo que exige bastante de você, porém com ganhos recompensadores.
+                            <div class="card">
+                              <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    É seguro ?
+                                  </button>
+                                </h2>
+                              </div>
+                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                  <p>Nosso site é totalmente seguro, não pedimos nenhuma informação que comprometa a segurança dos nossos usuários e sempre prezamos pela transparência.</p>
+                                </div>
                               </div>
                             </div>
+                            <div class="card">
+                              <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Quando posso começar ?
+                                  </button>
+                                </h2>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                  O primeiro passo é estudar e se interessar por uma área dos investimentos, e após isso, aprofundar nos seus estudos até sentir confiança o bastante para iniciar.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                     Existe uma idade específica ?
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                    Não. Para iniciar no mundo dos investimentos, não importa se você é um idoso ou uma pessoa mais nova, basta ter curiosidade de aprender e coragem para iniciar a sua jornada de investimentos.
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card">
+                                <div class="card-header" id="headingFive">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                      Preciso ser experiente na área ?
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                    Não. A experiência você vai adquirir ao longo do tempo, basta persistir e ter em mente que é um estudo que exige bastante de você, porém com ganhos recompensadores.
+                                  </div>
+                                </div>
+                              </div>
                           </div>
-                      </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <!--Redes Sociais-->
     <section class="redes-sociais">
         <div class="container-fluid padding">

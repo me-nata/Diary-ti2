@@ -7,6 +7,37 @@ body {
   width: 100%;
   font-family: "Poppins", sans-serif;
   color: #222;
+    scroll-behavior: smooth;
+
+  
+}
+
+#chatbot {
+  background: linear-gradient(-45deg, #8c00ff, #0d00ff, #009b53, #f8ff6a) no-repeat;
+  background-size: 300% 300%;
+  animation: gradient 20s ease-in-out infinite;
+  padding: 10vw;
+  padding-left: 25vw;
+  padding-right: 25vw;
+}
+#chatbot > h1:first-child {
+  text-align: center;
+  color: #fffff0;
+  font-size: 50px;
+}
+#chatbot > p {
+  text-align: center;
+  color: #fffff0;
+  margin-bottom: 30px;
+}
+#chatbot > iframe {
+  border: none;
+  border-radius: 25px;
+
+  transition:  transform 0.4s;
+}
+#chatbot > iframe:hover {
+  transform: scale(1.05);
 }
 
 .padding {
@@ -32,20 +63,21 @@ header {
   position: relative;
 }
 
-header button {
+ul > button {
   width: max-content;
   height: 50px;
-  border-radius: 20px;
-  border: 2px solid gold;
-  background-color: beige;
+  border-radius: 20px !important;
+  border: 2px solid gold !important;
+  background-color: beige !important;
+  box-shadow: 5px 2px 2px gold;
 
-  transition-property: all;
-  transition-duration: 0.5s;
+  transition-property: all !important;
+  transition-duration: 0.5s !important;
 
   margin-top: 0;
 }
-header button:hover {
-  box-shadow: 5px 2px 2px gold;
+ul > button:hover {
+  background-color: rgb(255, 255, 255) !important;
 }
 
 /*Header*/
@@ -686,4 +718,16 @@ footer .form-control {
   footer .assine {
     display: none;
   }
+}
+
+@keyframes gradient {
+  0%{
+      background-position: 0% 50%;
+  }
+  50%{
+      background-position: 100% 50%;
+  }
+  100%{
+      background-position: 0% 50%;
+  }   
 }
