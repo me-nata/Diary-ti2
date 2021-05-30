@@ -5,7 +5,7 @@ import model.Agenda;
 import java.sql.*;
 
 public class AgendaDAO {
-	private Connection conexao;
+	private static Connection conexao;
 
 	public AgendaDAO() {
 		conexao = null;
@@ -14,7 +14,7 @@ public class AgendaDAO {
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
-		String mydatabase = "Agenda";
+		String mydatabase = "postgres";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
 		String username = "ti2cc";
@@ -56,7 +56,7 @@ public class AgendaDAO {
 			Statement st = conexao.createStatement();
 			
 			st.executeUpdate("INSERT INTO agenda (id, texto, data) "
-					       + "VALUES ("+agenda.getId()+ ", '" + agenda.getTexto() + "', '"  
+					       + "VALUES (default, '" + agenda.getTexto() + "', '"  
 					       + agenda.getData() + "');");
 			st.close();
 			status = true;
@@ -71,7 +71,7 @@ public class AgendaDAO {
 		try {  
 			Statement st = conexao.createStatement();
 			String sql = "UPDATE agenda SET texto = '" + agenda.getTexto() + "', data = '" + agenda.getData() + "'"
-					   + " WHERE id = " + agenda.getId();
+					   + " WHERE id = " + agendae.getId();
 			st.executeUpdate(sql);
 			st.close();
 			status = true;

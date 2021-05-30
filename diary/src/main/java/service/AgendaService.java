@@ -18,15 +18,77 @@ public class AgendaService {
 
 	public AgendaService() {
 		agendaDAO = new AgendaDAO();
+		agendaDAO.conectar();
+	}
+	
+	
+	private String tratarDado(String dado) {
+		String novo_dado = new String();
+		for(int i = 0; i < dado.length(); i++) {
+			if(dado.charAt(i) == '[' && dado.charAt(i+1) == '{') {
+				i += 1;
+			}
+			if(dado.charAt(i) == '%' && dado.charAt(i+1) == '2' && dado.charAt(i+2) == '2') {
+				i += 3;
+			} 
+		
+			if(dado.charAt(i) == '}' && dado.charAt(i+1) == ']') {
+				novo_dado += dado.charAt(i);
+				i = dado.length();
+			} else {
+				novo_dado += dado.charAt(i);				
+			}
+			
+		}
+		
+		return novo_dado;
+	}
+	private String[] separarCards(String dado) {
+		return dado.split("},");
+	}
+	private String[] separarQuery(String dado) {
+		int index_titulo = dado.indexOf("titulo:");
+		int index_texto  = dado.indexOf("texto:");
+		
+		int index_final_data   = dado.lastIndexOf("data:");
+		int index_final_titulo = dado.lastIndexOf("titulo:");
+		int index_final_texto  = dado.lastIndexOf("texto:");
+		
+		String data = new String();
+		String titulo = new String();
+		String texto = new String();
+		
+		while(index_final_data++ < index_titulo-1) {
+			data += dado.charAt(index_final_data);
+		}
+		while(index_final_titulo++ < index_texto-1) {
+			titulo += dado.charAt(index_final_titulo);
+		}
+		while(index_final_texto++ < dado.length()) {
+			texto += dado.charAt(index_final_texto);
+		}
+		
+		String[] Query = {data, titulo, texto};
+		return Query;
+	
 	}
 	
 	public Object add(Request request, Response response) {
-		String texto = request.queryParams("texto");
-		String data = request.queryParams("data");
-                
-		Agenda agenda = new Agenda(0, texto, data);
+		String dado_total = request.queryString();
+		dado_total = tratarDado(dado_total);
+		
+		String []dados = separarCards(dado_total);
+		System.out.println(dados[1]);
+//		for(int i = 0; i < dados.length; i++) {			
+//			String []querys = separarQuery(dados[i]);
+//			for(int j = 0; j < 3; j++) {
+//				System.out.println(querys[j]);				
+//			}
+//		}
+		
+		//Agenda agenda = new Agenda(0, texto, data);
 
-		agendaDAO.inserirAgenda(agenda);
+		//agendaDAO.inserirAgenda(agenda);
 
 		response.status(201); // 201 Created
 		return 0;

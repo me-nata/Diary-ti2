@@ -1,0 +1,98 @@
+package service;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import dao.AgendaDAO;
+import dao.UsuarioDAO;
+import model.Agenda;
+import spark.Request;
+import spark.Response;
+
+
+public class AgendaService {
+
+	private UsuarioDAO usuarioDAO;
+	private AgendaDAO agendaDAO;
+
+	public AgendaService() {
+		agendaDAO = new AgendaDAO();
+		agendaDAO.conectar();
+	}
+	
+	public Object add(Request request, Response response) {
+		String dados = String.toString(request.queryString());
+		
+		String texto = request.queryParams("texto");
+		String data = request.queryParams("data");
+		System.out.println(texto);
+		System.out.println(data);
+		
+		
+		Agenda agenda = new Agenda(0, texto, data);
+
+		agendaDAO.inserirAgenda(agenda);
+
+		response.status(201); // 201 Created
+		return 0;
+	}
+
+	public Object get(Request request, Response response) {
+		int id = Integer.parseInt(request.params(":id"));
+		
+		Agenda agenda = (Agenda) agendaDAO.get(id);
+		
+		if (agenda != null) {
+    	        response.header("Content-Type", "application/xml");
+    	        response.header("Content-Encoding", "UTF-8");
+
+            return "<agenda>\n" + 
+            		"\t<id>" + agenda.getId() + "</id>\n" +
+            		"\t<texto>" + agenda.getDescricao() + "</texto>\n" +
+            		"\t<data>" + agenda.getPreco() + "</data>\n" +
+            		"</agenda>\n";
+        } else {
+            response.status(404); // 404 Not found
+            return "Agenda " + id + " não encontrada.";
+        }
+
+	}
+
+	public Object update(Request request, Response response) {
+        int id = Integer.parseInt(request.params(":id"));
+        
+		Agenda agenda = (Agenda) agendaDAO.get(id);
+
+        if (agenda != null) {
+        	//agenda.setId(request.queryParams("id"));
+        	agenda.setTexto(request.queryParams("texto")));
+        	agenda.setData(request.queryParams("data")));
+
+        	agendaDAO.atualizarAgenda(agenda);
+        	
+            return id;
+        } else {
+            response.status(404); // 404 Not found
+            return "Agenda não encontrada.";
+        }
+
+	}
+
+	public Object remove(Request request, Response response) {
+        int id = Integer.parseInt(request.params(":id"));
+
+        Agenda agenda = (Agenda) agendaDAO.get(id);
+
+        if (agenda != null) {
+
+            agendaDAO.excluirAgenda(agenda);
+
+            response.status(200); // success
+        	return id;
+        } else {
+            response.status(404); // 404 Not found
+            return "Agenda não encontrada.";
+        }
+	}
+}
