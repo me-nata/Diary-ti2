@@ -1,20 +1,20 @@
 package dao;
 
-import model.Usuario;
+import model.Agenda;
 
 import java.sql.*;
 
-public class UsuarioDAO {
-	private  static Connection conexao;       
-	
-	public UsuarioDAO() {
+public class AgendaDAO {
+	private static Connection conexao;
+
+	public AgendaDAO() {
 		conexao = null;
 	}
 	
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
-		String mydatabase = "diary";
+		String mydatabase = "postgres";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
 		String username = "ti2cc";
@@ -49,16 +49,15 @@ public class UsuarioDAO {
 
 //----------------------------------------------------------O-CRUD------------------------------------------------//
 
-	public static boolean inserirUsuario(Usuario usuario) {
+	public boolean inserirAgenda(Agenda agenda) {
 		boolean status = false;
-
+		
 		try {  
 			Statement st = conexao.createStatement();
 			
-			st.executeUpdate("INSERT INTO usuarios (id, nome, email, senha, idade, premium) "
-					       + "VALUES (default, '" + usuario.getNome() + "', '"  
-					       + usuario.getEmail() + "', '" + usuario.getSenha() + "', " + usuario.getIdade() + ", '" 
-					       + usuario.getPremium() + "');");
+			st.executeUpdate("INSERT INTO agenda (id, texto, data) "
+					       + "VALUES (default, '" + agenda.getTexto() + "', '"  
+					       + agenda.getData() + "');");
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -67,14 +66,12 @@ public class UsuarioDAO {
 		return status;
 	}
 	
-	public boolean atualizarUsuario(Usuario usuario) {
+	public boolean atualizarAgenda(Agenda agenda) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			String sql = "UPDATE usuario SET nome = '" + usuario.getNome() + "', email = '" + usuario.getEmail() 
-			           + "', senha = '" + usuario.getSenha() + "', idade = '" + usuario.getIdade() 
-			           + "', premium = '" + usuario.getPremium() + "'"
-					   + " WHERE id = " + usuario.getId();
+			String sql = "UPDATE agenda SET texto = '" + agenda.getTexto() + "', data = '" + agenda.getData() + "'"
+					   + " WHERE id = " + agendae.getId();
 			st.executeUpdate(sql);
 			st.close();
 			status = true;
@@ -84,11 +81,11 @@ public class UsuarioDAO {
 		return status;
 	}
 	
-	/*public boolean excluirUsuario(int id) {
+	public boolean excluirAgenda(int id) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM usuario WHERE id = " + id);
+			st.executeUpdate("DELETE FROM agenda WHERE id = " + id);
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -96,54 +93,28 @@ public class UsuarioDAO {
 		}
 		return status;
 	}
-	*/
-	public Usuario get(int id) {
-		Usuario[] usuarios = getUsuarios(); 
-		for (Usuario usuario : usuarios) {
-			if (id == usuario.getId()) {
-				return usuario;
-			}
-		}
-		return null;
-	}
 	
-	public Usuario[] getUsuarios() {
-		Usuario[] usuarios = null;
+	
+	public Agenda[] getAgenda() {
+		Agenda[] agendas = null;
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM usuarios");		
+			ResultSet rs = st.executeQuery("SELECT * FROM agenda");		
 	         if(rs.next()){
 	             rs.last();
-	             usuarios = new Usuario[rs.getRow()];
+	             agendas = new Agenda[rs.getRow()];
 	             rs.beforeFirst();
 
 	             for(int i = 0; rs.next(); i++) {
-	                usuarios[i] = new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("email"),
-	                		                  rs.getString("senha"), rs.getInt("idade"), rs.getBoolean("premium"));
+	                agendas[i] = new Agenda(rs.getInt("id"), rs.getString("texto"), rs.getString("data"));
 	             }
 	          }
 	          st.close();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		
-		return usuarios;
+		return agendas;
 	}
-	
-//	private int getId() {
-//		boolean status = false;
-//		String id;
-//		
-//		try {  
-//			Statement st = conexao.createStatement();
-//			String sql = "SELECT id FROM usuarios WHERE (nome = "+")"; 
-//			id = st.executeUpdate(sql);
-//			st.close();
-//			status = true;
-//		} catch (SQLException u) {  
-//			throw new RuntimeException(u);
-//		}
-//		return status;
-//	}
+
 }
